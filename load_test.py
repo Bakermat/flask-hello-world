@@ -3,6 +3,7 @@ import asyncio
 import string
 from aiohttp import ClientSession
 
+
 def get_random_string(length):
     letters = string.ascii_lowercase
     result_str = ''.join(choice(letters) for i in range(length))
@@ -40,7 +41,7 @@ async def run(r, url):
         await responses
 
 while True:
-    number_good = randint(1000, 2000)
+    number_good = randint(0, 3000)
     url_good = "http://localhost:5000"
 
     loop = asyncio.get_event_loop()
@@ -48,7 +49,7 @@ while True:
     future = asyncio.ensure_future(run(number_good, url_good))
     loop.run_until_complete(future)
 
-    number_bad = randint(200, 400)
+    number_bad = randint(0, 500)
     url_bad = f'http://localhost:5000/{get_random_string(8)}'
 
     loop = asyncio.get_event_loop()
