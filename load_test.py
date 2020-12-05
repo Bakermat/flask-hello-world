@@ -41,8 +41,14 @@ async def run(r, url):
         await responses
 
 while True:
-    number_root = randint(0, 3000)
+    number_root = randint(0, 700)
     url_root = "http://localhost:5000"
+    loop = asyncio.get_event_loop()
+    future = asyncio.ensure_future(run(number_root, url_root))
+    loop.run_until_complete(future)
+    
+    number_store = randint(0, 400)
+    url_store = "http://localhost:5000/store"
     loop = asyncio.get_event_loop()
     future = asyncio.ensure_future(run(number_root, url_root))
     loop.run_until_complete(future)
@@ -53,7 +59,7 @@ while True:
     future = asyncio.ensure_future(run(number_ip, url_ip))
     loop.run_until_complete(future)
     
-    number_error = randint(0, 500)
+    number_error = randint(0, 300)
     url_error = "http://localhost:5000/error"
     loop = asyncio.get_event_loop()
     future = asyncio.ensure_future(run(number_error, url_error))
