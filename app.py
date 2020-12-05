@@ -6,11 +6,11 @@ def root():
     return f'Welcome to our website!!', 200
 
 @app.route('/ip', methods=["GET"])
-def get_my_ip():
+def ip():
     return f'Your IP is: {request.remote_addr}', 200
 
 @app.route('/store', methods=["GET"])
-def get_my_ip():
+def store():
     return f'Welcome to the store!', 200
 
 @app.route('/error', methods=["GET"])
