@@ -1,4 +1,7 @@
 from flask import Flask, request
+from time import sleep
+
+
 app = Flask(__name__)
 
 @app.route('/', methods=["GET"])
@@ -16,3 +19,8 @@ def store():
 @app.route('/error', methods=["GET"])
 def error():
     return f'Fake Authentication Error!', 502
+
+@app.errorhandler(404)
+def invalid_route(e):
+    sleep(3)
+    return "Page does not exist."
